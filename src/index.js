@@ -24,16 +24,19 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
 
 import AdminLayout from "layouts/Admin.js";
-import AuthLayout from "layouts/Auth.js";
+import Auth from "layouts/Auth.js";
+// import Login from "views/examples/login.js"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
     <Switch>
+      {/* <Route path="/login" render={(props) => <AdminLayout {...props} />} /> */}
+      <Route path="/login" element={<Auth />} />
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-      <Redirect from="/" to="/admin/index" />
+      {/* <Route path="/login" render={(props) => <AuthLayout {...props} />} /> */}
+      <Redirect from="/" to="/login" />
     </Switch>
   </BrowserRouter>
 );

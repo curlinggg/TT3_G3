@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Index from "views/Index.js";
+import Index from "views/HomePage";
 import Claims from "views/ClaimsComponent.js";
 import ClaimDetails from "views/ClaimDetails.js";
 import EditClaim from "views/EditClaim.js";
@@ -28,7 +28,7 @@ import Icons from "views/examples/Icons.js";
 
 var routes = [
   {
-    path: "/index",
+    path: "/claims-dashboard",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Index,
