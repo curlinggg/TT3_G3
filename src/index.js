@@ -1,39 +1,39 @@
-/*!
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bodyParser = require('body-parser')
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
+const app = express();
 
-=========================================================
-* Argon Dashboard React - v1.2.2
-=========================================================
+app.use(express.json());
+app.use(cors(corsOptions));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+mongoose
+  .connect(
+    "mongodb+srv://weihongyeo:admin11@cluster0.s48hozq.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB");
 
-* Coded by Creative Tim
+    app.listen(3000, () => {
+      console.log("Node API app is running on port 3000");
+    });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
-=========================================================
+const claimRouter = require("./routes/claimRoutes");
+const employeeRouter = require("./routes/employeeRoutes")
+const authRouter = require("./routes/authRoute");
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+app.use("/", claimRouter);
+app.use("/", employeeRouter);
+app.use("/auth", authRouter);
 
-*/
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
-import "assets/plugins/nucleo/css/nucleo.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "assets/scss/argon-dashboard-react.scss";
-
-import AdminLayout from "layouts/Admin.js";
-import AuthLayout from "layouts/Auth.js";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-      <Redirect from="/" to="/admin/index" />
-    </Switch>
-  </BrowserRouter>
-);
+// module.exports = app;
