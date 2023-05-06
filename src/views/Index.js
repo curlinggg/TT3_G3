@@ -22,6 +22,7 @@ import classnames from "classnames";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 import data from '../dummydata/projectexpenseclaims.json';
+import { getClaims } from "utils/api/ClaimAPI";
 // reactstrap components
 import {
   Card,
