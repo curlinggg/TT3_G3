@@ -2,20 +2,27 @@ import { UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle , Badg
 import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 export default function ClaimRow(data){
     const detail = data.claim;
+    const convertDate = (date) =>{
+        const inputDate = new Date(date);
+        const day = inputDate.getDate().toString().padStart(2, '0');
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = inputDate.getFullYear().toString().slice(-2);
+        const formattedDateString = `${day}/${month}/${year}`;
+        return formattedDateString;
+    }
     const history = useHistory();
     const routeToViewClaim = () => {
-        let id = detail.ClaimID;
-        let path = '/admin/claimdetails/';
-        history.push(path + id);
+        
+        let path = '/admin/claimdetails';
+        history.push(path);
       }
       const routeToEditClaim = () => {
-        let id = detail.ClaimID;
-        let path = '/admin/editclaim/';
-        history.push(path + id);
+        let path = '/admin/editclaim';
+        history.push(path);
       }
     return(
         <tr>
-            <td>{detail.LastEditedClaimDate}</td>
+            <td>{convertDate(detail.LastEditedClaimDate)}</td>
             <td>{detail.ClaimID}</td>
             <td>{detail.ProjectID}</td>
             <td>{detail.Amount}</td>

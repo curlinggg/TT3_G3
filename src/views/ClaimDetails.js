@@ -43,10 +43,7 @@ import {
     }
     return (
       <>
-        <UserHeader />
-        {/* Page content */}
-        <Container className="mt--7" fluid>
-          <Row>
+        <Row>
             {/*  */}
             <Col className="order-xl-1" xl="">
               <Card className="bg-secondary shadow">
@@ -239,7 +236,6 @@ import {
               </Card>
             </Col>
           </Row>
-        </Container>
       </>
     );
   };

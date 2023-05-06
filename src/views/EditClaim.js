@@ -33,6 +33,8 @@ import {
   import UserHeader from "components/Headers/UserHeader.js";
   
   const EditClaim = (props) => {
+    
+
     return (
       <>
         <UserHeader />
