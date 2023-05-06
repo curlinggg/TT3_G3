@@ -1,4 +1,5 @@
 import { UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle , Badge} from "reactstrap"
+import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 export default function ClaimRow(data){
     const detail = data.claim;
     const convertDate = (date) =>{
@@ -9,6 +10,16 @@ export default function ClaimRow(data){
         const formattedDateString = `${day}/${month}/${year}`;
         return formattedDateString;
     }
+    const history = useHistory();
+    const routeToViewClaim = () => {
+        
+        let path = '/admin/claimdetails';
+        history.push(path);
+      }
+      const routeToEditClaim = () => {
+        let path = '/admin/editclaim';
+        history.push(path);
+      }
     return(
         <tr>
             <td>{convertDate(detail.LastEditedClaimDate)}</td>
@@ -37,7 +48,7 @@ export default function ClaimRow(data){
                     <DropdownMenu className="dropdown-menu-arrow" right>
                             <DropdownItem
                                 href="#pablo"
-                                onClick={(e) => e.preventDefault()}>
+                                onClick={(e) => routeToViewClaim}>
                                 View
                             </DropdownItem>
                         {detail.Status != "Approved" ?

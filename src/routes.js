@@ -16,6 +16,9 @@
 
 */
 import Index from "views/Index.js";
+import Claims from "views/ClaimsComponent.js";
+import ClaimDetails from "views/ClaimDetails.js";
+import EditClaim from "views/EditClaim.js";
 import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
@@ -29,6 +32,27 @@ var routes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Index,
+    layout: "/admin"
+  },
+  {
+    path: "/claims",
+    name: "Claims (just here for testing purposes)",
+    icon: "ni ni-tv-2 text-primary",
+    component: Claims,
+    layout: "/admin"
+  },
+  {
+    path: "/claimdetails",
+    name: "Claim Details",
+    icon: "ni ni-tv-2 text-primary",
+    component: ClaimDetails,
+    layout: "/admin"
+  },
+  {
+    path: "/editclaim",
+    name: "Edit Claim",
+    icon: "ni ni-tv-2 text-primary",
+    component: EditClaim,
     layout: "/admin"
   },
   {

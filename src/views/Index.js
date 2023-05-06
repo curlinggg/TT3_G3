@@ -16,6 +16,8 @@
 
 */
 import { useEffect, useState } from "react";
+
+import { useHistory } from "react-router-dom";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 // javascipt plugin for creating charts
@@ -42,6 +44,7 @@ import {
 } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
+// import TableButton from "components/Dashboard/TableButton";
 import ClaimRow from "components/Dashboard/ClaimRow";
 
 const Index = (props) => {
@@ -50,6 +53,15 @@ const Index = (props) => {
 
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
+  }
+  const history = useHistory();
+  const routeToViewClaim = () => {
+    let path = '/admin/claimdetails';
+    history.push(path);
+  }
+  const routeToEditClaim = () => {
+    let path = '/admin/editclaim';
+    history.push(path);
   }
 
   const toggleNavs = (e, index) => {
