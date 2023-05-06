@@ -23,6 +23,7 @@ import classnames from "classnames";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 import data from '../dummydata/projectexpenseclaims.json';
+import { getClaims } from "utils/api/ClaimAPI";
 // reactstrap components
 import {
   Card,
@@ -72,13 +73,13 @@ const Index = (props) => {
 
   const jsonContent = data.tables[0].columns;
   // console.log(jsonContent);
-  const [claims, setClaims] = useState(jsonContent)
+  const [claims, setClaims] = useState()
   console.log(claims)
-  // useEffect(()=>{
-  //   //load claims
-  //   setClaims(jsonContent);
-  // })
-  // console.log(claims);
+
+  useEffect(()=>{
+    //load claims
+    getClaims(setClaims)
+  })
 
   return (
     <>
