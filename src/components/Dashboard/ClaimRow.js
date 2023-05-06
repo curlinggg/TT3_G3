@@ -1,12 +1,7 @@
 import { UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle , Badge} from "reactstrap"
 import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
-import axios from 'axios';
-import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
-
 export default function ClaimRow(data){
     const detail = data.claim;
-    const id = detail.ClaimID;
     const convertDate = (date) =>{
         const inputDate = new Date(date);
         const day = inputDate.getDate().toString().padStart(2, '0');
@@ -25,38 +20,6 @@ export default function ClaimRow(data){
         let path = '/admin/editclaim';
         history.push(path);
       }
-    
-    // Function to Delete Claim
-    const deleteClaim = async (id) => {
-        await axios({
-            method: 'DELETE',
-            url: `http://localhost:3000/deleteClaim?claimId=${id}`,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-            
-        }).then(response => {
-            history.push('/admin/index')
-    })
-  }
-  // Function for popup
-  const deletePopup = () => {
-
-    confirmAlert({
-      title: 'Confirm to delete',
-      message: 'Are you sure you want to delete?',
-      buttons: [
-        {
-          label: 'Yes',
-          onClick: () => deleteClaim()
-        },
-        {
-          label: 'No',
-          //onClick: () => alert('Click No')
-        }
-      ]
-    });
-  }
     return(
         <tr>
             <td>{convertDate(detail.LastEditedClaimDate)}</td>
@@ -66,7 +29,7 @@ export default function ClaimRow(data){
             <td>{detail.CurrencyID}</td>
             <td>
                 <Badge color="" className="badge-dot mr-4">
-                <i className={detail.Status === "Rejected" ? "bg-danger": (detail.Status === "Pending" ? "bg-warning" : "bg-success")} />
+                <i className={detail.Status == "Rejected" ? "bg-danger": (detail.Status == "Pending" ? "bg-warning" : "bg-success")} />
                 {detail.Status}
                 </Badge>
             </td>
@@ -88,7 +51,7 @@ export default function ClaimRow(data){
                                 onClick={(e) => routeToViewClaim}>
                                 View
                             </DropdownItem>
-                        {detail.Status !== "Approved" ?
+                        {detail.Status != "Approved" ?
                             <>
                             <DropdownItem
                                 href="#pablo"
@@ -97,7 +60,7 @@ export default function ClaimRow(data){
                             </DropdownItem>
                             <DropdownItem
                                 href="#pablo"
-                                onClick={deletePopup}>
+                                onClick={(e) => e.preventDefault()}>
                                 Delete
                             </DropdownItem>
                             </> : <></>
