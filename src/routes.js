@@ -55,6 +55,13 @@ var routes = [
     component: EditClaim,
     layout: "/admin"
   },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-tv-2 text-primary",
+    component: Login,
+    layout: "/auth"
+  },
 
 ];
 export default routes;
