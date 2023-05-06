@@ -34,13 +34,13 @@ var routes = [
     component: Index,
     layout: "/admin"
   },
-  // {
-  //   path: "/claims",
-  //   name: "Claims (just here for testing purposes)",
-  //   icon: "ni ni-tv-2 text-primary",
-  //   component: Claims,
-  //   layout: "/admin"
-  // },
+  {
+    path: "/claims",
+    name: "Claims (just here for testing purposes)",
+    icon: "ni ni-tv-2 text-primary",
+    component: Claims,
+    layout: "/admin"
+  },
   {
     path: "/claimdetails",
     name: "Claim Details",
@@ -54,13 +54,6 @@ var routes = [
     icon: "ni ni-tv-2 text-primary",
     component: EditClaim,
     layout: "/admin"
-  },
-  {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-tv-2 text-primary",
-    component: Login,
-    layout: "/auth"
   },
 
 ];
