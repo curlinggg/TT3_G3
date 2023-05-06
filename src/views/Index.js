@@ -65,6 +65,10 @@ const Index = (props) => {
     let path = '/admin/editclaim';
     history.push(path);
   }
+  const routeToCreateClaim = () => {
+    let path = '/admin/claims';
+    history.push(path);
+  }
 
   const toggleNavs = (e, index) => {
     e.preventDefault();
@@ -80,7 +84,7 @@ const Index = (props) => {
             <Card className="shadow">
               <CardHeader className="border-0">
                 <h3 className="mb-0 d-inline">Claim Details</h3>
-                <button type="button" class="btn bg-gradient-primary d-inline float-right">Create</button>
+                <button type="button" className="btn bg-gradient-primary d-inline float-right" onClick={routeToCreateClaim}>Create</button>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">

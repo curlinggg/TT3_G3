@@ -107,6 +107,7 @@ import {
                               id="input-project-id"
                               placeholder="First name"
                               type="text"
+                              defaultValue={this.props.ProjectID}
                             />
                           </FormGroup>
                         </Col>
@@ -123,6 +124,7 @@ import {
                               id="input-employee-id"
                               placeholder="Employee ID"
                               type="text"
+                              defaultValue={this.props.EmployeeID}
                             />
                           </FormGroup>
                         </Col>
@@ -145,9 +147,9 @@ import {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
                               id="nput-claim-id"
                               type="text"
+                              defaultValue={this.props.ClaimID}
                             />
                           </FormGroup>
                         </Col>
@@ -163,7 +165,7 @@ import {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="New York"
+                              defaultValue={this.props.CurrencyID}
                               id="input-city"
                               placeholder="City"
                               type="text"
@@ -180,10 +182,10 @@ import {
                             </label>
                             <Input
                               className="form-control-alternative"
-                              defaultValue="United States"
                               id="input-country"
                               placeholder="Country"
                               type="text"
+                              defaultValue={this.props.Amount}
                             />
                           </FormGroup>
                         </Col>
@@ -200,6 +202,7 @@ import {
                               id="input-postal-code"
                               placeholder="Postal code"
                               type="number"
+                              defaultValue={this.props.EmployeeID}
                             />
                           </FormGroup>
                         </Col>

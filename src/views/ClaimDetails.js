@@ -31,9 +31,11 @@ import {
   } from "reactstrap";
   // core components
   import UserHeader from "components/Headers/UserHeader.js";
+  import { useState } from 'react'
   import { useHistory } from "react-router-dom";
   
   const ClaimDetails = (props) => {
+    const [tuple] = useState(props.tuple);
     const history = useHistory();
     const routeToEditClaim = () => {
       let path = '/admin/editclaim';
@@ -116,12 +118,9 @@ import {
                             >
                               Project ID
                             </label>
-                            <Input
-                              className="form-control-alternative"
-                              id="input-project-id"
-                              placeholder="First name"
-                              type="text"
-                            />
+                            <div>
+                              <p>{tuple[0]}</p>
+                            </div>
                           </FormGroup>
                         </Col>
                         <Col lg="6">
