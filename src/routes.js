@@ -16,6 +16,7 @@
 
 */
 import Index from "views/Index.js";
+import Claims from "views/ClaimsComponent.js";
 import Profile from "views/examples/Profile.js";
 import Maps from "views/examples/Maps.js";
 import Register from "views/examples/Register.js";
@@ -29,6 +30,13 @@ var routes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Index,
+    layout: "/admin"
+  },
+  {
+    path: "/claims",
+    name: "Claims (just here for testing purposes)",
+    icon: "ni ni-tv-2 text-primary",
+    component: Claims,
     layout: "/admin"
   },
   {
