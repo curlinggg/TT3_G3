@@ -34,13 +34,13 @@ var routes = [
     component: Index,
     layout: "/admin"
   },
-  {
-    path: "/claims",
-    name: "Claims (just here for testing purposes)",
-    icon: "ni ni-tv-2 text-primary",
-    component: Claims,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/claims",
+  //   name: "Claims (just here for testing purposes)",
+  //   icon: "ni ni-tv-2 text-primary",
+  //   component: Claims,
+  //   layout: "/admin"
+  // },
   {
     path: "/claimdetails",
     name: "Claim Details",

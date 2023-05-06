@@ -35,8 +35,8 @@ import {
 
 import UserHeader from "components/Headers/UserHeader.js";
 
-const ClaimsComponent = () => {
-    const [images, setImages] = React.useState([]);
+const ClaimsComponent = ({createMode, setCreateMode}) => {
+  const [images, setImages] = React.useState([]);
   const maxNumber = 69;
 
   const onImageChange = (imageList, addUpdateIndex) => {
@@ -44,13 +44,12 @@ const ClaimsComponent = () => {
     console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
-
+  //go back to dashboard
+  // setCreateMode(false)
+  
   return (
     <>
-      <UserHeader />
-      {/* Page content */}
-      <Container className="mt--7" fluid>
-        <Row>
+     <Row>
           {/*  */}
           <Col className="order-xl-1" xl="">
             <Card className="bg-secondary shadow">
@@ -321,7 +320,6 @@ const ClaimsComponent = () => {
             </Card>
           </Col>
         </Row>
-      </Container>
     </>
   );
 };
