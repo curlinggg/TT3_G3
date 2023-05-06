@@ -17,8 +17,8 @@
 */
 
 // reactstrap components
-import React from 'react';
-import ImageUploading from 'react-images-uploading';
+import React from "react";
+import ImageUploading from "react-images-uploading";
 import {
   Button,
   Card,
@@ -29,7 +29,7 @@ import {
   Container,
   Row,
   Col,
-  Form
+  Form,
 } from "reactstrap";
 // core components
 
@@ -76,8 +76,7 @@ const ClaimsComponent = ({createMode, setCreateMode}) => {
                     Employee Information
                   </h6>
                   <div className="pl-lg-4">
-                    <Row>
-                    </Row>
+                    <Row></Row>
                     <Row>
                       <Col lg="6">
                         <FormGroup>
@@ -130,7 +129,6 @@ const ClaimsComponent = ({createMode, setCreateMode}) => {
                           </label>
                           <Input
                             className="form-control-alternative"
-
                             id="nput-claim-id"
                             type="text"
                           />
@@ -148,7 +146,6 @@ const ClaimsComponent = ({createMode, setCreateMode}) => {
                           </label>
                           <Input
                             className="form-control-alternative"
-
                             id="nput-claim-id"
                             type="text"
                           />
@@ -261,58 +258,63 @@ const ClaimsComponent = ({createMode, setCreateMode}) => {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Row>
+                    <Row className="pb-2">
                       <Col>
-                      <div className="App">
-      <ImageUploading
-        multiple
-        value={images}
-        onChange={onImageChange}
-        maxNumber={maxNumber}
-        dataURLKey="data_url"
-      >
-        {({
-          imageList,
-          onImageUpload,
-          onImageRemoveAll,
-          onImageUpdate,
-          onImageRemove,
-          isDragging,
-          dragProps,
-        }) => (
-          // write your building UI
-          <div className="upload__image-wrapper">
-            <Button outline color="default" type="button"
-              style={isDragging ? { color: 'red' } : undefined}
-              onClick={onImageUpload}
-              {...dragProps}
-            >
-              Upload Image
-            </Button>
-           
-          </div>
-        )}
-      </ImageUploading>
-    </div>
-                        {/* <FormGroup controlId="formFile" className="mb-3">
-                          <Form.Label>Default file input example</Form.Label>
-                          <Form.Control type="file" />
-                        </FormGroup> */}
-                        {/* <FormGroup>
-                            <label
-                              className="form-control-label"
-                              htmlFor="input-employee-id"
-                            >
-                              Upload Image
-                            </label>
-                            <Input
-                              className="form-control-alternative"
-                              id="input-employee-id"
-                              placeholder="Employee ID"
-                              type="text"
-                            />
-                          </FormGroup> */}
+                        <div className="App">
+
+                         
+                          <ImageUploading
+                          id="input-photo"
+                            multiple
+                            value={images}
+                            onChange={onImageChange}
+                            maxNumber={maxNumber}
+                            dataURLKey="data_url"
+                          >
+                            {({
+                              imageList,
+                              onImageUpload,
+                              onImageRemoveAll,
+                              onImageUpdate,
+                              onImageRemove,
+                              isDragging,
+                              dragProps,
+                            }) => (
+                              // write your building UI
+                              <div className="upload__image-wrapper">
+                                 <label
+                            className="form-control-label"
+                            htmlFor="input-photo"
+                          >
+                            Upload image of claim expenses
+                          </label>
+                                <Row className="px-3">
+                                <Button
+                                  outline
+                                  color="default"
+                                  type="button"
+                                  style={
+                                    isDragging ? { color: "red" } : undefined
+                                  }
+                                  onClick={onImageUpload}
+                                  {...dragProps}
+                                >
+                                  Upload 
+                                </Button>
+                                </Row>
+                               
+                              </div>
+                            )}
+                          </ImageUploading>
+                        </div>
+                      
                       </Col>
+                    </Row>
+                    <hr className="my-3" />
+                    <Row className="px-3 py-2">
+                      <Button color="primary" type="submit" className="btn-primary">
+                        Submit Claim
+                      </Button>
                     </Row>
                   </div>
                 </Form>
