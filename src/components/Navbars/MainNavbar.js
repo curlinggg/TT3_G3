@@ -39,7 +39,7 @@ const MainNavbar = (props) => {
           
           <Nav className="align-items-center d-none d-md-flex" navbar>
           <NavItem>
-                <NavLink className="nav-link-icon" to="/auth/login" tag={Link}>
+                <NavLink className="nav-link-icon" to="/admin/index" tag={Link}>
                 <i className="ni ni-single-02" />
                   <span className="nav-link-inner--text">Welcome, Employee Name</span>
                 </NavLink>
