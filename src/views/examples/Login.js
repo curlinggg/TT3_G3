@@ -17,10 +17,11 @@
 */
 
 // reactstrap components
+import { useState } from "react";
 import {
   Button,
   Card,
-//   CardHeader,
+  //   CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -28,56 +29,52 @@ import {
   InputGroupAddon,
   InputGroupText,
   InputGroup,
-//   Row,
-  Col
+  //   Row,
+  Col,
 } from "reactstrap";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+
 
 const Login = () => {
+  const [eid, setEid] = useState("");
+  const [pwd, setPwd] = useState("");
+  const history = useHistory();
+  const authenticationTriggered = () => {
+    // console.log(eid, pwd);
+    axios
+      .post("http://localhost:3000/auth/login", {
+        emp_id: eid,
+        password: pwd,
+      })
+      .then((response) => {
+        console.log("success");
+        // history.push('/admin/claims-dashboard');
+      })
+      .then((data) => { 
+        console.log("success");
+        history.push('/admin/claims-dashboard');
+      })
+      .catch((error) => { // error is handled in catch block
+        alert("username or password is wrong")
+        console.log(error)
+      });
+    //   .then((response) => {
+    //     console.log("kube 51")
+    //     console.log(response.status);
+    //     if (response.status = "200") {
+    //         history.push('/');
+    //     }
+    //   }
+    //   .catch(
+    //     alert("username or password is wrong")
+    //   ));
+      
+  };
   return (
     <>
       <Col lg="5" md="7">
         <Card className="bg-secondary shadow border-0">
-          {/* <CardHeader className="bg-transparent pb-5">
-            <div className="text-muted text-center mt-2 mb-3">
-              <small>Sign in with</small>
-            </div>
-            <div className="btn-wrapper text-center">
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/icons/common/github.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Github</span>
-              </Button>
-              <Button
-                className="btn-neutral btn-icon"
-                color="default"
-                href="#pablo"
-                onClick={(e) => e.preventDefault()}
-              >
-                <span className="btn-inner--icon">
-                  <img
-                    alt="..."
-                    src={
-                      require("../../assets/img/icons/common/google.svg")
-                        .default
-                    }
-                  />
-                </span>
-                <span className="btn-inner--text">Google</span>
-              </Button>
-            </div>
-          </CardHeader> */}
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
               <div>Sign in</div>
@@ -87,13 +84,15 @@ const Login = () => {
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
                     <InputGroupText>
-                      <i className="ni ni-email-83" />
+                      <i className="ni ni-circle-08" />
                     </InputGroupText>
                   </InputGroupAddon>
                   <Input
-                    placeholder="Email"
+                    placeholder="User ID"
                     type="email"
                     autoComplete="new-email"
+                    value={eid}
+                    onChange={(e) => setEid(e.target.value)}
                   />
                 </InputGroup>
               </FormGroup>
@@ -108,6 +107,8 @@ const Login = () => {
                     placeholder="Password"
                     type="password"
                     autoComplete="new-password"
+                    value={pwd}
+                    onChange={(e) => setPwd(e.target.value)}
                   />
                 </InputGroup>
               </FormGroup>
@@ -125,7 +126,12 @@ const Login = () => {
                 </label>
               </div> */}
               <div className="text-center">
-                <Button className="my-4" color="primary" type="button">
+                <Button
+                  className="my-4"
+                  color="primary"
+                  type="button"
+                  onClick={authenticationTriggered}
+                >
                   Sign in
                 </Button>
               </div>
