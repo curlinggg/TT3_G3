@@ -2,9 +2,6 @@ const Employees = require("../models/employeeModel");
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
 
-// @desc Login
-// @route POST /auth
-// @access Public
 const login = asyncHandler(async (req, res) => {
   const { emp_id, password } = req.body;
 
@@ -45,6 +42,12 @@ const login = asyncHandler(async (req, res) => {
   res.json({ accessToken });
 });
 
+const verify_credentials = (accessToken, emp_id) => {
+  const decoded = jwt.verify(accessToken, "super_secret_access_key");
+  return decoded.employeeId === emp_id;
+};
+
+/*
 // @desc Refresh
 // @route GET /auth/refresh
 // @access Public - because access token has expired
@@ -98,9 +101,6 @@ const logout = (req, res) => {
   res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
   res.json({ message: "Cookie cleared" });
 };
+*/
 
-module.exports = {
-  login,
-  refresh,
-  logout,
-};
+module.exports = { login, verify_credentials };
