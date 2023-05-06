@@ -17,7 +17,6 @@
 */
 import { useEffect, useState } from "react";
 
-import { useHistory } from "react-router-dom";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
 // javascipt plugin for creating charts
@@ -46,6 +45,7 @@ import {
 import Header from "components/Headers/Header.js";
 // import TableButton from "components/Dashboard/TableButton";
 import ClaimRow from "components/Dashboard/ClaimRow";
+import { BrowserRouter, Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 const Index = (props) => {
   const [activeNav, setActiveNav] = useState(1);
@@ -54,6 +54,19 @@ const Index = (props) => {
   if (window.Chart) {
     parseOptions(Chart, chartOptions());
   }
+  const handleCreate = (event) => {
+    event.preventDefault();
+    let path = '/admin/claims';
+    history.push(path);
+    // console.log(`The email you entered was: ${email}`)
+    // console.log(`The password you entered was: ${password}`)
+    // // there should be authentication here 
+    // setAuthenticated(true)
+    // if (authenticated) {
+    //     navigate('/home');
+    // }
+  }
+
   const history = useHistory();
   const routeToViewClaim = () => {
     let path = '/admin/claimdetails';
@@ -78,6 +91,7 @@ const Index = (props) => {
   //   //load claims
   //   setClaims(jsonContent);
   // })
+//   (e) => e.preventDefault()
   // console.log(claims);
 
   return (
@@ -89,7 +103,7 @@ const Index = (props) => {
             <Card className="shadow">
               <CardHeader className="border-0">
                 <h3 className="mb-0 d-inline">Claim Details</h3>
-                <button type="button" className="btn bg-gradient-primary d-inline float-right">Create</button>
+                <button type="button" className="btn btn-primary d-inline float-right" onClick={handleCreate}>Create</button>
               </CardHeader>
               <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
