@@ -33,7 +33,9 @@ root.render(
   <BrowserRouter>
     <Switch>
       {/* <Route path="/login" render={(props) => <AdminLayout {...props} />} /> */}
-      <Route path="/login" element={<Auth />} />
+      <Route exact path="/login">
+        <Auth />
+      </Route>
       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
       {/* <Route path="/login" render={(props) => <AuthLayout {...props} />} /> */}
       <Redirect from="/" to="/login" />
