@@ -42,7 +42,6 @@ import {
 } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
-import TableButton from "components/Dashboard/TableButton";
 import ClaimRow from "components/Dashboard/ClaimRow";
 
 const Index = (props) => {

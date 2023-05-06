@@ -1,10 +1,17 @@
 import { UncontrolledDropdown, DropdownMenu, DropdownItem, DropdownToggle , Badge} from "reactstrap"
 export default function ClaimRow(data){
     const detail = data.claim;
-    
+    const convertDate = (date) =>{
+        const inputDate = new Date(date);
+        const day = inputDate.getDate().toString().padStart(2, '0');
+        const month = (inputDate.getMonth() + 1).toString().padStart(2, '0');
+        const year = inputDate.getFullYear().toString().slice(-2);
+        const formattedDateString = `${day}/${month}/${year}`;
+        return formattedDateString;
+    }
     return(
         <tr>
-            <td>{detail.LastEditedClaimDate}</td>
+            <td>{convertDate(detail.LastEditedClaimDate)}</td>
             <td>{detail.ClaimID}</td>
             <td>{detail.ProjectID}</td>
             <td>{detail.Amount}</td>
