@@ -5,6 +5,7 @@ import classnames from "classnames";
 // javascipt plugin for creating charts
 import Chart from "chart.js";
 import data from '../dummydata/projectexpenseclaims.json';
+
 // reactstrap components
 import {
   Card,
@@ -62,8 +63,13 @@ const Dashboard = ({createMode,setCreateMode}) => {
 
   const jsonContent = data.tables[0].columns;
   // console.log(jsonContent);
-  const [claims, setClaims] = useState(jsonContent)
-  console.log(claims)
+   const [claims, setClaims] = useState(jsonContent)
+  
+  // console.log(claims)
+  // useEffect(()=>{
+  //   //load claims
+  //   getAllClaims();
+  // }, []);
   // useEffect(()=>{
   //   //load claims
   //   setClaims(jsonContent);
